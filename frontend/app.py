@@ -10,7 +10,7 @@ user_input = st.text_input("Ask the assistant:")
 
 if user_input:
     st.session_state.messages.append(("You", user_input))
-    response = requests.post("https://tailortalk-backend.up.railway.app/chat/", ...)
+    response = requests.post("https://tailortalk-backend.up.railway.app/chat/", json={"message": user_input})
     assistant_reply = response.json()["reply"]
     st.session_state.messages.append(("Assistant", assistant_reply))
 
