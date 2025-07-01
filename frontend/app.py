@@ -17,7 +17,6 @@ if user_input:
 
     try:
         response_json = response.json()
-        st.write("Debug Response JSON:", response_json)  
         assistant_reply = response_json["reply"]
     except Exception as e:
         st.error(f"Error parsing response: {e}")
