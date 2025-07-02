@@ -46,7 +46,23 @@ User input: "{user_input}"
         return None
 
 
+def services_response(user_input):
+    lowered = user_input.lower()
+    keywords = ["what can you do", "services", "help", "features", "assist"]
+    if any(k in lowered for k in keywords):
+        return (
+            "I can help you check available time slots and book appointments. "
+            "Just ask me things like:\n"
+            "- 'What are the available slots on July 3rd?'\n"
+            "- 'Book a slot on July 4th at 2 PM.'"
+        )
+    return None
+
+
 def gemini_chitchat_response(user_input):
+    predefined = services_response(user_input)
+    if predefined:
+        return predefined
     try:
         response = model.generate_content(user_input)
         return response.text.strip()
